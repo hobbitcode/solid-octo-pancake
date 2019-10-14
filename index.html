@@ -12,7 +12,7 @@
 </head>
 <body>
 <h1>Parent Heading</h1>
-<iframe id="1" src="https://agreeable-melon.flowt.io/" style="width:100%;height:700px"></iframe>
+<iframe id="1" src="https://uat.demovps.com/#/paymentpages/076ED734E84E4342B8D62FDCF77E649E" style="width:100%;height:700px"></iframe>
 
   <script src="https://unpkg.com/vue/dist/vue.js"></script>
   <script src="https://unpkg.com/vuetify/dist/vuetify.js"></script>
@@ -25,16 +25,12 @@
       },
       created: function() {
         window.onmessage = function(e){
-            if (e.data === 'hello') {
+          console.log(e.data.status)
+            if (e.data.status === 'cancel') {
                 alert('It works! This message is sourced from a different child app that is being iFramed. ');
             }
-            if (e.data === 'success') {
+            if (e.data.status === 'success') {
               // VPS will onmessage success after axios call to server comes back as successful
-              // In response, Sturgis will close/remove VPS iFrame here and route to appropriate internal components
-              document.getElementById("1").style.display="none" //etc.
-            }
-            if (e.data === 'cancel') {
-              // VPS will onmessage cancel is citizen chooses to do so
               // In response, Sturgis will close/remove VPS iFrame here and route to appropriate internal components
               document.getElementById("1").style.display="none" //etc.
             }
